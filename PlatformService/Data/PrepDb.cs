@@ -19,7 +19,7 @@ namespace PlatformService.Data
                 Console.WriteLine("-->Seeding data");
 
                 context.Platforms.AddRange(
-                        new Platform() {Name ="Dot Net", Publisher = "MIcrosoft", Cost =" Free" },
+                        new Platform() { Name ="Dot Net", Publisher = "MIcrosoft", Cost =" Free" },
                         new Platform() { Name = "Sql Server", Publisher = "Publisher", Cost = " Free" },
                         new Platform() { Name = "Kubernetes", Publisher = "Cloud Native", Cost = " Free" }
                     );
