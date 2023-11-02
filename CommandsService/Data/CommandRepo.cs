@@ -52,7 +52,7 @@ namespace CommandsService.Data
             return context.Platforms.Any(p => p.Id == platformId);
         }
 
-        public bool SaveChnages()
+        public bool SaveChanges()
         {
             return context.SaveChanges() >= 0;
         }

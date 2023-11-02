@@ -4,7 +4,7 @@ namespace CommandsService.Data
 {
     public interface ICommandRepo
     {
-        bool SaveChnages();
+        bool SaveChanges();
 
         //Platforms
         IEnumerable<Platform> GetAllPlatforms();
