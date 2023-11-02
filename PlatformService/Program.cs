@@ -11,8 +11,20 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//DB services
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
+
+if (builder.Environment.IsProduction())
+{
+    Console.WriteLine("--> Using SqlServer");
+    builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("PlatformConn")));
+}
+else
+{
+    Console.WriteLine("--> Using InMem");
+    //DB services
+    builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
+}
+
+
 //Dependency Injection
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 
@@ -24,7 +36,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
-PrepDb.PrepPopulation(app);
+//static class to load models
+PrepDb.PrepPopulation(app, app.Environment.IsProduction());
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -32,7 +45,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//minor remove to remove warnings in logs
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

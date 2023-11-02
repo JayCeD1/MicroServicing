@@ -20,7 +20,7 @@ namespace PlatformService.SyncDataServices.Http
                 JsonSerializer.Serialize(platform),
                 Encoding.UTF8,
                 "application/json");
-
+            
             var response = await httpClient.PostAsync($"{configuration["CommandService"]}", httpContent);
 
             if (response.IsSuccessStatusCode)
