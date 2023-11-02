@@ -70,7 +70,7 @@ namespace CommandsService.Controllers
             repo.SaveChanges();
 
             var readDto = mapper.Map<CommandReadDto>(command);
-            return CreatedAtRoute(nameof(GetCommandForPlatform), new { plaformId = platformId, commandId = command.Id }, readDto);
+            return CreatedAtRoute(nameof(GetCommandForPlatform), new { plaformId = platformId, commandId = readDto.Id }, readDto);
         }
     }
 }
