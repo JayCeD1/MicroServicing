@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformService", "PlatformService\PlatformService.csproj", "{57450AAF-01B3-43B7-80B1-C90A7C9F0ECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlatformService", "PlatformService\PlatformService.csproj", "{57450AAF-01B3-43B7-80B1-C90A7C9F0ECD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{07D20F5A-9C58-4135-8D60-42B9AAA7AE21}"
+	ProjectSection(SolutionItems) = preProject
+		commands-depl.yaml = commands-depl.yaml
+		ingress-srv.yaml = ingress-srv.yaml
+		local-pvc.yaml = local-pvc.yaml
+		mssql-plat-depl.yaml = mssql-plat-depl.yaml
+		platforms-depl.yaml = platforms-depl.yaml
+		platforms-np-srv.yaml = platforms-np-srv.yaml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandsService", "CommandsService\CommandsService.csproj", "{E7A58B26-9A76-4BC7-A0F6-68FE1F2A66AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +27,10 @@ Global
 		{57450AAF-01B3-43B7-80B1-C90A7C9F0ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57450AAF-01B3-43B7-80B1-C90A7C9F0ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57450AAF-01B3-43B7-80B1-C90A7C9F0ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A58B26-9A76-4BC7-A0F6-68FE1F2A66AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A58B26-9A76-4BC7-A0F6-68FE1F2A66AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A58B26-9A76-4BC7-A0F6-68FE1F2A66AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A58B26-9A76-4BC7-A0F6-68FE1F2A66AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
