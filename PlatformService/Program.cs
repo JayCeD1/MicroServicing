@@ -28,6 +28,7 @@ else
 
 //Dependency Injection
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
+builder.Services.AddGrpc();
 
 //HttpClient
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
