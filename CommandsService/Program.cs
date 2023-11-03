@@ -25,6 +25,8 @@ builder.Services.AddScoped<IPlatformDataClient, PlatformDataClient>();
 //AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
+//Populate using Grpc
+PrepDb.PrepPopulation(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
