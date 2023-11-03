@@ -1,4 +1,5 @@
 ﻿using CommandsService.Models;
+using System;
 
 namespace CommandsService.Data
 {
@@ -50,6 +51,11 @@ namespace CommandsService.Data
         public bool PlatformExists(int platformId)
         {
             return context.Platforms.Any(p => p.Id == platformId);
+        }
+
+        public bool ExternalPlatformExists(int externalPlatformId)
+        {
+            return context.Platforms.Any(p => p.ExternalID == externalPlatformId);
         }
 
         public bool SaveChanges()
