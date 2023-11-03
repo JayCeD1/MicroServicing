@@ -57,5 +57,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapGrpcService<GrpcPlatformService>();
+//Optional line for another endpoint contract
+app.MapGet("/protos/platforms.proto", async context =>
+{
+    await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
+});
 
 app.Run();
