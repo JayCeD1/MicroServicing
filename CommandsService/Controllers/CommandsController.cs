@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommandsService.Controllers
 {
-    [Route("api/c/platforms/{platformId}/[controller]/")]
+    [Route("api/c/platforms/{platformId:int}/[controller]/")]
     [ApiController]
     public class CommandsController : ControllerBase
     {
@@ -34,7 +34,7 @@ namespace CommandsService.Controllers
             return Ok(mapper.Map<IEnumerable<CommandReadDto>>(commands));
         }
 
-        [HttpGet("{commandId}", Name = "GetCommandForPlatform")]
+        [HttpGet("{commandId:int}", Name = "GetCommandForPlatform")]
         public ActionResult<CommandReadDto> GetCommandForPlatform(int platformId, int commandId)
         {
             Console.WriteLine($"--> Hit GetCommandForPlatform: {platformId} / {commandId}");
@@ -46,12 +46,13 @@ namespace CommandsService.Controllers
 
             var command = repo.GetCommand(platformId, commandId);
 
-            if (command == null)
+            if (command != null)
             {
-                return NotFound();
-            }
+                return Ok(mapper.Map<CommandReadDto>(command));
 
-            return Ok(mapper.Map<CommandReadDto>(command));
+            }
+            return NotFound();
+
         }
 
         [HttpPost]
