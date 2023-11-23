@@ -46,12 +46,11 @@ namespace CommandsService.Controllers
 
             var command = repo.GetCommand(platformId, commandId);
 
-            if (command != null)
+            if (command == null)
             {
-                return Ok(mapper.Map<CommandReadDto>(command));
-
+                return NotFound();
             }
-            return NotFound();
+            return Ok(mapper.Map<CommandReadDto>(command));
 
         }
 
